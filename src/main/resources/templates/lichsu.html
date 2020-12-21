@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head>
+    <title>Lịch sử</title>
+    <style th:replace="/components/style/style"></style>
+</head>
+<body class="hold-transition sidebar-mini layout-navbar-fixed">
+    <div class="wrapper">
+        <!-- NAVBAR AND SIDEBAR -->
+        <div th:replace="/components/navbar"></div>
+        <div th:replace="/components/sidebar"></div>
+        <!-- END NAVBAR AND SIDEBAR -->
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <section class="content-header container-fluid">
+                    <h3>Lịch sử</h4>
+                </section>
+                <div class="content">
+                    <!------------------------ CONTENT ------------------------------------------>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Lịch sử nộp tiền</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="nhankhauTable" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Tên khoản đóng góp</th>
+                                        <th>Người nộp</th>
+                                        <th>Số tiền</th>
+                                        <th>Ghi chú</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="khoanthu : ${khoanthus}">
+                                        <td th:text="*{khoanthu[0]}"></td>
+                                        <td th:text="*{khoanthu[1]}"></td>
+                                        <td th:text="*{khoanthu[2]}"></td>
+                                        <td th:text="*{khoanthu[3]}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!------------------------ END CONTENT ------------------------------------>
+                </div>
+                <div class="content-footer container-fluid"></div>
+            </div>           
+        </div>
+        <footer th:replace="/components/footer"></footer>
+        <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+    <script th:replace="components/style/script.html"></script>
+</body>
+</html>

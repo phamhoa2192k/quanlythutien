@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <title>Thống kê</title>
+    <style th:replace="/components/style/style"></style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-navbar-fixed">
+    <div class="wrapper">
+        <!-- NAVBAR AND SIDEBAR -->
+        <div th:replace="/components/navbar"></div>
+        <div th:replace="/components/sidebar"></div>
+        <!-- END NAVBAR AND SIDEBAR -->
+        <div class="content-wrapper">
+            <section class="content-header container-fluid">
+                <h3>Thống kê</h4>
+            </section>
+            <div class="content">
+                <div class="container-fluid">
+                    <!------------------------ CONTENT ------------------------------------------>
+                    <div th:replace="components/small_box"></div>
+                </div>
+                <!------------------------ END CONTENT ------------------------------------>
+            </div>
+            <!-- FOOTER -->
+            <footer th:replace="/components/footer"></footer>
+            <!-- FOOTER -->
+            <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </div>
+    <script th:replace="/components/style/script"></script>
+</body>
+
+</html>
