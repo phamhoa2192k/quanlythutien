@@ -7,5 +7,5 @@ import edu.hust.QuanLy.model.HoKhau;
 
 @Repository
 public interface HoKhauRepository extends JpaRepository<HoKhau, Integer>{
-    
+    HoKhau findByIdChuHo(int idChuHo);
 }

@@ -20,8 +20,8 @@ public class ThuTienService {
         List<HoKhau> hokhaus = new ArrayList<>();
         List<NhanKhau> nhankhaus = nhanKhauRepository.findByHoTen(tenChuHo);
         for(NhanKhau nhankhau : nhankhaus){
-            HoKhau h = hoKhauRepository.findById(nhankhau.getId()).get();
-            hokhaus.add(h);
+            HoKhau h = hoKhauRepository.findByIdChuHo(nhankhau.getId());
+            if(h != null) hokhaus.add(h);
         }
         return hokhaus;
     }

@@ -1,5 +1,6 @@
 package edu.hust.QuanLy.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,9 @@ public class ThuTienController {
     @PostMapping(value="/timhokhau")
     public String postTenChuHo(String tenChuHo, Model model) {
         List<HoKhau> hokhaus = thuTienService.findHoKhauByTenChuHo(tenChuHo);
+        if(hokhaus.isEmpty()) model.addAttribute("hokhaus", new ArrayList<>());
+        else model.addAttribute("hokhaus", hokhaus);
         model.addAttribute("tenChuHo", tenChuHo);
-        model.addAttribute("hokhaus", hokhaus);
         return "thutien_timhokhau";
     }
 
