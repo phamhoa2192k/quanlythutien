@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.hust.QuanLy.model.HoKhau;
+import edu.hust.QuanLy.model.ThuTien;
+import edu.hust.QuanLy.repositories.ThuTienRepository;
+import edu.hust.QuanLy.services.ThongKeKhoanChuaDongGopService;
 import edu.hust.QuanLy.services.ThongKeThuTienService;
 import edu.hust.QuanLy.services.ThuTienService;
 
@@ -21,6 +24,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class ThuTienController {
     @Autowired ThuTienService thuTienService;
     @Autowired ThongKeThuTienService thongKeThuTienService;
+    @Autowired ThongKeKhoanChuaDongGopService thongKeKhoanChuaDongGopService;
+    @Autowired ThuTienRepository thuTienRepository;
 
     @GetMapping(value="")
     public String getThuTienPage(Model model) {
@@ -36,8 +41,11 @@ public class ThuTienController {
         return "thutien_timhokhau";
     }
 
-    @GetMapping("/thutien/{id}")
+    @GetMapping("/noptien/{id}")
     public String getNopTienPage(@PathVariable("id") int id, Model model){
+        model.addAttribute("idChuHo", id);
+        model.addAttribute("khoanthubatbuocs", thongKeKhoanChuaDongGopService.getKhoanBatBuoc(id));
+        model.addAttribute("khoanthutunguyens", thongKeKhoanChuaDongGopService.getKhoanTuNguyen(id));
         return "noptien";
     }
 
@@ -45,5 +53,16 @@ public class ThuTienController {
     public String getLichSuPage(@PathVariable("id") int id, Model model){
         model.addAttribute("khoanthus", thongKeThuTienService.getThuTienByIdHoKhau(id));
         return "lichsu";
-    }  
+    } 
+    
+    @PostMapping("/noptien")
+    public String postNopTien(int idChuHo, String tenNguoiNop, String idKhoanThuBatBuoc, String soTienBatBuoc, String idKhoanThuTuNguyen, int soTienTuNguyen, String ghiChu,Model model){
+        String[] a = idKhoanThuBatBuoc.split(",");
+        String[] b = idKhoanThuTuNguyen.split(",");
+        ThuTien t1 = new ThuTien(Integer.parseInt(a[0]), tenNguoiNop, idChuHo, Integer.parseInt(a[1]), ghiChu);
+        ThuTien t2 = new ThuTien(Integer.parseInt(b[0]), tenNguoiNop, idChuHo, soTienTuNguyen, ghiChu);
+        thuTienRepository.save(t1);
+        thuTienRepository.save(t2);
+        return "noptienthanhcong";
+    }
 }

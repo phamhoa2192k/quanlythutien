@@ -15,9 +15,14 @@ import edu.hust.QuanLy.repositories.UserRepository;
 public class LoginController {
     @Autowired private UserRepository userRepository;
 
-    @GetMapping("/login")
+    @GetMapping({"/","/login"})
     public String getloginPage(){
         return "login";
+    }
+
+    @GetMapping({"/logout"})
+    public String logout(){
+        return "redirect:/login";
     }
     
 

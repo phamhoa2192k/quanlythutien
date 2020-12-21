@@ -8,13 +8,11 @@ import org.springframework.stereotype.Service;
 
 import edu.hust.QuanLy.model.ThuTien;
 import edu.hust.QuanLy.repositories.KhoanDongGopRepository;
-import edu.hust.QuanLy.repositories.NhanKhauRepository;
 import edu.hust.QuanLy.repositories.ThuTienRepository;
 
 @Service
 public class ThongKeThuTienService {
     @Autowired private ThuTienRepository thuTienRepository;
-    @Autowired private NhanKhauRepository nhanKhauRepository;
     @Autowired private KhoanDongGopRepository khoanDongGopRepository;
 
     public List<List<String> > getThuTienByIdHoKhau(int idHoKhau){
@@ -26,7 +24,7 @@ public class ThongKeThuTienService {
             List<String> a = new ArrayList<>();
             a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).get().getTenKhoanThu());
             //System.out.println("---------------------------------"+ a.get(0));
-            a.add(nhanKhauRepository.findById(item.getIdNguoiNop()).get().getHoTen());
+            a.add(item.getTenNguoiNop());
             a.add(Integer.toString(item.getSoTien()));
             a.add(item.getGhiChu());
             li.add(a);

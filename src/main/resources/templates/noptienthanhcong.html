@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="https://www.thymeleaf.org">
 <head>
-    <title>Home Page</title>
+    <title>Nộp tiền</title>
     <style th:replace="/components/style/style"></style>
 </head>
 <body class="hold-transition sidebar-mini layout-navbar-fixed">
@@ -13,11 +13,25 @@
         <div class="content-wrapper">
             <div class="container-fluid">
                 <section class="content-header container-fluid">
-                    <h3>Home Page</h4>
+                    <h3>Nộp tiền</h4>
                 </section>
                 <div class="content">
                     <!------------------------ CONTENT ------------------------------------------>
-
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Thông báo
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-success">
+                                <strong>Thành công!</strong> Thông tin nộp tiền đã lưu trong cơ sở dữ liệu.
+                              </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/thutien">Trở về trang thu tiền</a>
+                        </div>
+                    </div>
                     <!------------------------ END CONTENT ------------------------------------>
                 </div>
                 <div class="content-footer container-fluid"></div>
