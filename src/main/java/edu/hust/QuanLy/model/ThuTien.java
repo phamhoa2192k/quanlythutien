@@ -1,5 +1,7 @@
 package edu.hust.QuanLy.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +33,9 @@ public class ThuTien {
     @Column(name = "ghichu")
     private String ghiChu;
 
+    @Column(name = "ngaynop", insertable = false, updatable = false, columnDefinition = "datetime default current_timestamp on update current_timestamp")
+    private Date ngayNop;
+
     public ThuTien(int idKhoanDongGop, String tenNguoiNop, int idHoKhau, int soTien, String ghiChu) {
         this.idKhoanDongGop = idKhoanDongGop;
         this.tenNguoiNop = tenNguoiNop;
@@ -38,6 +43,10 @@ public class ThuTien {
         this.soTien = soTien;
         this.ghiChu = ghiChu;
     }
+
+    //testetsetadunf;owaehsdo;jnfowuarefn
     
-    
+    public ThuTien() {
+        
+    }
 }

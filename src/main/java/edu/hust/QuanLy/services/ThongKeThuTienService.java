@@ -26,6 +26,10 @@ public class ThongKeThuTienService {
             //System.out.println("---------------------------------"+ a.get(0));
             a.add(item.getTenNguoiNop());
             a.add(Integer.toString(item.getSoTien()));
+            a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).get().getThoiGianDong());
+            a.add(item.getTenNguoiNop());
+            a.add(Integer.toString(item.getSoTien()));
+            a.add(String.valueOf(item.getNgayNop()));
             a.add(item.getGhiChu());
             li.add(a);
         }

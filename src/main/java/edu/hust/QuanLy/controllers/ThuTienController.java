@@ -56,11 +56,13 @@ public class ThuTienController {
     } 
     
     @PostMapping("/noptien")
-    public String postNopTien(int idChuHo, String tenNguoiNop, String idKhoanThuBatBuoc, String soTienBatBuoc, String idKhoanThuTuNguyen, int soTienTuNguyen, String ghiChu,Model model){
+    public String postNopTien(int idChuHo, String tenNguoiNop, String idKhoanThuBatBuoc, String soTienBatBuoc, String idKhoanThuTuNguyen, int soTienTuNguyen, String ghiChuKhoanBatBuoc, String ghiChuKhoanTuNguyen, Model model){
         String[] a = idKhoanThuBatBuoc.split(",");
         String[] b = idKhoanThuTuNguyen.split(",");
-        ThuTien t1 = new ThuTien(Integer.parseInt(a[0]), tenNguoiNop, idChuHo, Integer.parseInt(a[1]), ghiChu);
-        ThuTien t2 = new ThuTien(Integer.parseInt(b[0]), tenNguoiNop, idChuHo, soTienTuNguyen, ghiChu);
+        if(ghiChuKhoanBatBuoc == "") ghiChuKhoanBatBuoc = "Không có";
+        if(ghiChuKhoanTuNguyen == "") ghiChuKhoanTuNguyen = "Không có";
+        ThuTien t1 = new ThuTien(Integer.parseInt(a[0]), tenNguoiNop, idChuHo, Integer.parseInt(a[1]), ghiChuKhoanBatBuoc);
+        ThuTien t2 = new ThuTien(Integer.parseInt(b[0]), tenNguoiNop, idChuHo, soTienTuNguyen, ghiChuKhoanTuNguyen);
         thuTienRepository.save(t1);
         thuTienRepository.save(t2);
         return "noptienthanhcong";

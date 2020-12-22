@@ -21,7 +21,7 @@ public class HoKhau  {
     @Column(name = "diachi")
     private String diaChi;
 
-    @Column(name = "ngaydangky")
+    @Column(name = "ngaydangky", insertable = false, updatable = false, columnDefinition = "datetime default current_timestamp on update current_timestamp")
     private Date ngayDangKy;
 }
 
