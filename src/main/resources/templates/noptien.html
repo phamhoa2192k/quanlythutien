@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+
+<head>
+    <title>Nộp tiền</title>
+    <style th:replace="/components/style/style"></style>
+</head>
+
+<body class="hold-transition sidebar-mini layout-navbar-fixed">
+    <div class="wrapper">
+        <!-- NAVBAR AND SIDEBAR -->
+        <div th:replace="/components/navbar"></div>
+        <div th:replace="/components/sidebar"></div>
+        <!-- END NAVBAR AND SIDEBAR -->
+        <div class="content-wrapper">
+            <div class="container-fluid">
+                <section class="content-header container-fluid">
+                    <h3>Nộp tiền</h4>
+                </section>
+                <div class="content">
+                    <!------------------------ CONTENT ------------------------------------------>
+                    <div class="card card-danger">
+                        <div class="card-header">
+                            <h3 class="card-title">Nộp tiền</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form" action="/thutien/noptien" method="POST">
+                            <div class="card-body">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="idChuHo">ID chủ hộ</label>
+                                        <input type="text" class="form-control" id="idChuHo" th:value="${idChuHo}" name = "idChuHo" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="tenNguoiNop">Tên người nộp</label>
+                                        <input type="text" class="form-control" id="time" placeholder="Tên người nộp"
+                                            name="tenNguoiNop" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <!-- Select multiple-->
+                                    <div class="form-group">
+                                        <label>Khoản bắt buộc</label>
+                                        <select class="form-control selectpicker" id="khoanbatbuoc"  name = "idKhoanThuBatBuoc"
+                                            onchange="myFunction()" required>
+                                            <option th:each="khoanthubatbuoc : ${khoanthubatbuocs}"
+                                                th:text="*{khoanthubatbuoc.getTenKhoanThu()}  + ' - '+ *{khoanthubatbuoc.getThoiGianDong()}"
+                                                th:value="*{khoanthubatbuoc.getId()} + ',' + *{khoanthubatbuoc.getSoTienToiThieu()} "
+                                                ></option>
+                                        </select>
+                                        <label for="soTien">Số tiền đóng góp cho khoản bắt buộc</label>
+                                        <input type="number" class="form-control" id="soTienBatBuoc" placeholder="Số tiền"
+                                            readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <!-- Select multiple-->
+                                    <div class="form-group">
+                                        <label>Khoản tự nguyện</label>
+                                        <select class="form-control selectpicker" required name = "idKhoanThuTuNguyen">
+                                            <option th:each="khoanthutunguyen : ${khoanthutunguyens}"
+                                                th:text="*{khoanthutunguyen.getTenKhoanThu()} + ' - '+ *{khoanthutunguyen.getThoiGianDong()}"
+                                                th:value="*{khoanthutunguyen.getId()}"
+                                                ></option>
+                                        </select>
+                                        <label for="soTienTuNguyen">Số tiền đóng góp cho khoản tự nguyện</label>
+                                        <input type="number" class="form-control" id="soTienTuNguyen"
+                                            placeholder="Số tiền" name="soTienTuNguyen" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ghichu">Ghi chú cho khoản bắt buộc</label>
+                                    <input type="text" class="form-control" id="ghichu" placeholder="ghichu"
+                                        name="ghiChuKhoanBatBuoc">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ghichu">Ghi chú cho khoản tự nguyện</label>
+                                    <input type="text" class="form-control" id="ghichu" placeholder="ghichu"
+                                        name="ghiChuKhoanTuNguyen">
+                                </div>
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!------------------------ END CONTENT ------------------------------------>
+                </div>
+                <div class="content-footer container-fluid"></div>
+            </div>
+        </div>
+        <footer th:replace="/components/footer"></footer>
+        <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+    <script th:replace="components/style/script.html"></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("khoanbatbuoc").value.split(',');
+            document.getElementById("soTienBatBuoc").value =  x[1];
+        }
+    </script>
+</body>
+
+</html>
