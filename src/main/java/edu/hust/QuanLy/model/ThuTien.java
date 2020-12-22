@@ -43,6 +43,8 @@ public class ThuTien {
         this.soTien = soTien;
         this.ghiChu = ghiChu;
     }
+
+    //testetsetadunf;owaehsdo;jnfowuarefn
     
     public ThuTien() {
         
