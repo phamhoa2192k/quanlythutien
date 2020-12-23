@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import edu.hust.QuanLy.model.KhoanDongGop;
 import edu.hust.QuanLy.repositories.KhoanDongGopRepository;
+import edu.hust.QuanLy.repositories.ThuTienRepository;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 

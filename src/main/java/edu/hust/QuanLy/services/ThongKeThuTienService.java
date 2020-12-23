@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.hust.QuanLy.model.KhoanDongGop;
 import edu.hust.QuanLy.model.ThuTien;
 import edu.hust.QuanLy.repositories.KhoanDongGopRepository;
 import edu.hust.QuanLy.repositories.ThuTienRepository;
@@ -22,8 +23,8 @@ public class ThongKeThuTienService {
         for(ThuTien item : list){
             
             List<String> a = new ArrayList<>();
-            a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).get().getTenKhoanThu());
-            a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).get().getThoiGianDong());
+            a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).orElse(new KhoanDongGop()).getTenKhoanThu());
+            a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).orElse(new KhoanDongGop()).getThoiGianDong());
             a.add(item.getTenNguoiNop());
             a.add(Integer.toString(item.getSoTien()));
             a.add(String.valueOf(item.getNgayNop()));

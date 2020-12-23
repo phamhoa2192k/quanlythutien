@@ -76,7 +76,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Tên khoản thu</th>
-                                        <th>Loại đóng góp</th>
+                                        <th>Bắt buộc</th>
                                         <th>Số tiền</th>
                                         <th>Thời gian đóng</th>
                                         <th></th>
@@ -86,7 +86,7 @@
                                     <tr th:each="khoanthu : ${khoanthus}">
                                         <td th:text="*{khoanthu.getId()}"></td>
                                         <td th:text="*{khoanthu.getTenKhoanThu()}"></td>
-                                        <td th:text="*{khoanthu.getIdLoaiDongGop()}"></td>
+                                        <td><span th:if="*{khoanthu.getIdLoaiDongGop()} == 1">X</span></td>
                                         <td th:text="*{khoanthu.getSoTienToiThieu()}"></td>
                                         <td th:text="*{khoanthu.getThoiGianDong()}"></td>
                                         <td>
