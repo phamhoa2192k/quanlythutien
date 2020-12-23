@@ -23,9 +23,6 @@ public class ThongKeThuTienService {
             
             List<String> a = new ArrayList<>();
             a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).get().getTenKhoanThu());
-            //System.out.println("---------------------------------"+ a.get(0));
-            a.add(item.getTenNguoiNop());
-            a.add(Integer.toString(item.getSoTien()));
             a.add(khoanDongGopRepository.findById(item.getIdKhoanDongGop()).get().getThoiGianDong());
             a.add(item.getTenNguoiNop());
             a.add(Integer.toString(item.getSoTien()));
